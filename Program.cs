@@ -14,44 +14,25 @@ namespace Week4_ovning3
             Dictionary<string, int> Elever = new Dictionary<string, int>();
             while (KeepRunning)
             {
-                Console.WriteLine("Välkomen");
-                Console.WriteLine("1: Lägg till ny elev + Betyg");
-                Console.WriteLine("2: Uppdatera befintligt betyg");
-                Console.WriteLine("3: Visa alla elever och deras betyg");
-                Console.WriteLine("4: Beräkna och visa medelbetyget");
-                Console.WriteLine("5: Avsluta");
+                Klasser.MenyMetod();
                 string UsersChoice = Console.ReadLine()!;
                 switch (UsersChoice)
                 { 
                  case "1":
-                        
-                            //➕ Lägga till en ny elev och betyg
-                            Console.WriteLine("Skriv ElevNamn");
-                            string Namn = Console.ReadLine()!;
-                            Console.WriteLine("Skriv in betyg");
-                            int Betyg = int.Parse(Console.ReadLine()!);
-                            Elever.Add(Namn, Betyg);
-                            break;
+
+                        //➕ Lägga till en ny elev och betyg
+                        Klasser.AddStudentAndGradeMetod(Elever);
+                        break;
                         
 
                     case "2":
-                        
-                            //🔁 Uppdatera ett befintligt betyg
-                            Console.WriteLine("Skriv elevnamn");
-                            string UppdateraNamn = Console.ReadLine()!;
-                            if (Elever.ContainsKey(UppdateraNamn))
-                            {
-                                Console.Write("Nytt betyg: ");
-                                int.TryParse(Console.ReadLine(), out int nyttBetyg);
-                                Elever[UppdateraNamn] = nyttBetyg;
-                            }
+
+                        //🔁 Uppdatera ett befintligt betyg
+                        Klasser.ChangeExistingStudentGradeMetod(Elever);
                             break;
                     case "3":
                         //📋 Visa alla elever och deras betyg
-                        foreach (var Elev in Elever)
-                        {
-                            Console.WriteLine($"{Elev.Key} {Elev.Value}");
-                        }
+                        Klasser.ShowAllStudentsAndGradesMetod(Elever);
                         break;
 
                     case "4":
